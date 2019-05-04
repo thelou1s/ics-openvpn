@@ -21,7 +21,7 @@ checkstyle {
 
 repositories {
     jcenter()
-    maven (url ="https://jitpack.io")
+//    maven (url ="https://jitpack.io")
     google()
 }
 
@@ -42,22 +42,22 @@ dependencies {
 
 val openvpn3SwigFiles = File(buildDir, "generated/source/ovpn3swig/ovpn3")
 
-tasks.register<Exec>("generateOpenVPN3Swig")
-{
-    var swigcmd = "swig"
-    // Workaround for Mac OS X since it otherwise does not find swig and I cannot get
-    // the Exec task to respect the PATH environment :(
-    if (File("/usr/local/bin/swig").exists())
-        swigcmd = "/usr/local/bin/swig"
-
-    doFirst {
-        mkdir(openvpn3SwigFiles)
-    }
-    commandLine(listOf(swigcmd, "-outdir", openvpn3SwigFiles, "-outcurrentdir", "-c++", "-java", "-package", "net.openvpn.ovpn3",
-            "-Isrc/main/cpp/openvpn3/client", "-Isrc/main/cpp/openvpn3/",
-            "-o", "${openvpn3SwigFiles}/ovpncli_wrap.cxx", "-oh", "${openvpn3SwigFiles}/ovpncli_wrap.h",
-            "src/main/cpp/openvpn3/javacli/ovpncli.i"))
-}
+//tasks.register<Exec>("generateOpenVPN3Swig")
+//{
+//    var swigcmd = "swig"
+//    // Workaround for Mac OS X since it otherwise does not find swig and I cannot get
+//    // the Exec task to respect the PATH environment :(
+//    if (File("/usr/local/bin/swig").exists())
+//        swigcmd = "/usr/local/bin/swig"
+//
+//    doFirst {
+//        mkdir(openvpn3SwigFiles)
+//    }
+//    commandLine(listOf(swigcmd, "-outdir", openvpn3SwigFiles, "-outcurrentdir", "-c++", "-java", "-package", "net.openvpn.ovpn3",
+//            "-Isrc/main/cpp/openvpn3/client", "-Isrc/main/cpp/openvpn3/",
+//            "-o", "${openvpn3SwigFiles}/ovpncli_wrap.cxx", "-oh", "${openvpn3SwigFiles}/ovpncli_wrap.h",
+//            "src/main/cpp/openvpn3/javacli/ovpncli.i"))
+//}
 
 android {
     compileSdkVersion(28)
