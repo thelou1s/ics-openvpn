@@ -7,8 +7,8 @@ JNI_DIR := $(call my-dir)
 # Build openvpn with mbedTLS (OpenVPN3 core is always build with mbedTLS)
 #USE_BREAKPAD=0
 
-include lzo/Android.mk
-include openssl/Android.mk
+include src/main/cpp/lzo/Android.mk
+include src/main/cpp/openssl/Android.mk
 
 ifeq ($(TARGET_ARCH),mips)
 	WITH_BREAKPAD=0
@@ -40,10 +40,10 @@ ifeq ($(USE_MBEDTLS),1)
 	include mbedtls/Android.mk
 endif
 
-include openvpn/Android.mk
+include src/main/cpp/openvpn/Android.mk
 
 ifeq ($(WITH_OPENVPN3),1)
-	include ovpn3/Android.mk
+	include src/main/cpp/ovpn3/Android.mk
 endif
 
 LOCAL_PATH := $(JNI_DIR)

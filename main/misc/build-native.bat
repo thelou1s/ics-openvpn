@@ -2,7 +2,7 @@
 
 setlocal EnableDelayedExpansion
 
-if not exist openvpn\.git (
+if not exist ..\openvpn\.git (
     set lasterror=Cannot find .git directory in openvpn, aborting
     goto :error
 ) else (
